@@ -4,6 +4,7 @@ export default function SsnyaegiUI() {
   return (
     <>
       <Title>SSNYAEGI</Title>
+      <div></div>
     </>
   );
 }
