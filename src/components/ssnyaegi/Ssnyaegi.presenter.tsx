@@ -30,7 +30,7 @@ export default function SsnyaegiUI(props) {
           </Row>
         ))}
       </Board>
-      <div></div>
+      <button>글 작성하기</button>
     </Wrapper>
   );
 }
