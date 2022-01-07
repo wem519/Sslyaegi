@@ -30,7 +30,14 @@ export default function SsnyaegiUI(props) {
           </Row>
         ))}
       </Board>
-      <button>글 작성하기</button>
+      <div>
+        <button
+          style={{ display: "block", float: "right", marginTop: "10px" }}
+          onClick={props.onClickWrite}
+        >
+          글 작성하기
+        </button>
+      </div>
     </Wrapper>
   );
 }
