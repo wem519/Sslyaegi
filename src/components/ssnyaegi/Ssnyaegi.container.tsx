@@ -9,7 +9,7 @@ export default function Ssnyaegi() {
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
-  const { data: boardsCount } = useQuery(FETCH_BOARDS_COUNT);
+  const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
   const router = useRouter();
 
   function onClickWrite() {
@@ -22,7 +22,7 @@ export default function Ssnyaegi() {
       startPage={startPage}
       setStartPage={setStartPage}
       refetch={refetch}
-      count={boardsCount?.fetchBoradCount}
+      count={dataBoardsCount?.fetchBoardsCount}
     />
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Pagintaions01(props) {
   const [clickedPage, setClickedPage] = useState(1);
   const lastPage = Math.ceil(props.count / 10);
+  //   console.log(props.count, "게시물");
 
   function onClickPage(event) {
     const clickedPage = Number(event.target.id);
