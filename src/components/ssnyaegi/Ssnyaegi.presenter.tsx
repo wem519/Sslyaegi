@@ -1,3 +1,4 @@
+import Pagintaions01 from "../commons/paginations/Paginataion01.container";
 import {
   Wrapper,
   Title,
@@ -30,6 +31,14 @@ export default function SsnyaegiUI(props) {
           </Row>
         ))}
       </Board>
+      <div>
+        <Pagintaions01
+          refetch={props.refetch}
+          startPage={props.startPage}
+          setStartPage={props.setStartPage}
+          count={props.count}
+        />
+      </div>
       <div>
         <button
           style={{ display: "block", float: "right", marginTop: "10px" }}
