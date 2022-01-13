@@ -41,7 +41,14 @@ export default function SsnyaegiUI(props) {
       </div>
       <div>
         <button
-          style={{ display: "block", float: "right", marginTop: "10px" }}
+          style={{
+            display: "block",
+            float: "right",
+            marginTop: "10px",
+            width: "171px",
+            height: "52px",
+            cursor: "pointer",
+          }}
           onClick={props.onClickWrite}
         >
           글 작성하기
