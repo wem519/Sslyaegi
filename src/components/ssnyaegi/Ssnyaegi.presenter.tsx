@@ -4,10 +4,15 @@ import {
   Title,
   Board,
   Row,
+  TopColumnNumber,
+  TopColumnTitle,
+  TopColumnWriter,
+  TopColumnDate,
   ColumnNumber,
   ColumnTitle,
   ColumnWriter,
   ColumnDate,
+  Submit,
 } from "./Ssnyaegi.styles";
 
 export default function SsnyaegiUI(props) {
@@ -15,11 +20,12 @@ export default function SsnyaegiUI(props) {
     <Wrapper>
       <Title>SSNYAEGI</Title>
       <Board>
+        <div style={{ borderTop: "1px solid black" }} />
         <Row>
-          <ColumnNumber>번호</ColumnNumber>
-          <ColumnTitle>제목</ColumnTitle>
-          <ColumnWriter>작성자</ColumnWriter>
-          <ColumnDate>날짜</ColumnDate>
+          <TopColumnNumber>번호</TopColumnNumber>
+          <TopColumnTitle>제목</TopColumnTitle>
+          <TopColumnWriter>작성자</TopColumnWriter>
+          <TopColumnDate>날짜</TopColumnDate>
         </Row>
         {props.data?.fetchBoards.map((el, index) => (
           <Row key={el._id}>
@@ -27,7 +33,6 @@ export default function SsnyaegiUI(props) {
             <ColumnTitle>{el.title}</ColumnTitle>
             <ColumnWriter>{el.writer}</ColumnWriter>
             <ColumnDate>{el.createdAt.slice(0, 10)}</ColumnDate>
-            <div></div>
           </Row>
         ))}
       </Board>
@@ -40,19 +45,7 @@ export default function SsnyaegiUI(props) {
         />
       </div>
       <div>
-        <button
-          style={{
-            display: "block",
-            float: "right",
-            marginTop: "10px",
-            width: "171px",
-            height: "52px",
-            cursor: "pointer",
-          }}
-          onClick={props.onClickWrite}
-        >
-          글 작성하기
-        </button>
+        <Submit onClick={props.onClickWrite}>게시물 등록하기</Submit>
       </div>
     </Wrapper>
   );

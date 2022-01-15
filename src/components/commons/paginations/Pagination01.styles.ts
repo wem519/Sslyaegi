@@ -4,7 +4,7 @@ interface IpageProps {
   isEdit?: boolean;
 }
 export const Page = styled.span`
-  margin: 0px 20px;
+  margin: 0px 15px;
 
   font-family: "SangSangRock";
 
