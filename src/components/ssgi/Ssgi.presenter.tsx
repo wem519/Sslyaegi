@@ -1,3 +1,4 @@
+import Uploads01 from "../commons/uploads/Uploads01";
 import {
   Wrapper,
   Title,
@@ -15,6 +16,7 @@ import {
   PostButton,
   Address,
   Youtube,
+  ImageWrapper,
 } from "./Ssgi.styles";
 export default function SsgiUI() {
   return (
@@ -60,9 +62,12 @@ export default function SsgiUI() {
             <Youtube />
           </InputWrapper>
         </InputWrapper>
-        <InputWrapper>
+        <ImageWrapper>
           <Label>사진 첨부</Label>
-        </InputWrapper>
+          {new Array(3).fill(1).map((el, index) => (
+            <Uploads01 key={`${el}+${index}`} />
+          ))}
+        </ImageWrapper>
       </Wrapper>
     </div>
   );
