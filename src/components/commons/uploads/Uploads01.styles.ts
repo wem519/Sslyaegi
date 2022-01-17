@@ -10,6 +10,7 @@ export const UploadButton = styled.button`
   width: 68px;
   height: 68px;
   border-style: none;
+  font-family: "myfont";
   margin: 2px;
   background-color: #bdbdbd;
   cursor: pointer;
