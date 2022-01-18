@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   margin: 100px auto;
   padding-left: 102px;
   padding-right: 102px;
-  font-family: "myfont";
   font-size: 15px;
   text-align: center;
   width: 1200px;
@@ -72,7 +71,6 @@ export const Submit = styled.button`
   height: 52px;
   background-color: white;
   border: 1px solid #bdbdbd;
-  font-family: "myfont";
   font-size: 16px;
   cursor: pointer;
 

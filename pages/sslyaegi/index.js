@@ -1,4 +1,4 @@
-import Ssnyaegi from "../../src/components/ssnyaegi/Ssnyaegi.container";
+import Ssnyaegies from "../../src/components/units/ssnyaegies/Ssnyaegies.container";
 export default function Sslyaegi() {
-  return <Ssnyaegi />;
+  return <Ssnyaegies />;
 }

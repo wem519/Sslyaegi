@@ -1,5 +1,5 @@
-import SsnyaegiUI from "./Ssnyaegi.presenter";
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./Ssnyaegi.queries";
+import SsnyaegiesUI from "./Ssnyaegies.presenter";
+import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./Ssnyaegies.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,7 +16,7 @@ export default function Ssnyaegi() {
     router.push("/sslyaegi/ssgi");
   }
   return (
-    <SsnyaegiUI
+    <SsnyaegiesUI
       data={data}
       onClickWrite={onClickWrite}
       startPage={startPage}

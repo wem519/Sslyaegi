@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  font-family: "myfont";
   margin: 100px auto;
   padding-left: 102px;
   padding-right: 102px;
@@ -52,12 +51,11 @@ export const Writer = styled.input`
   height: 52px;
   padding-left: 16px;
   border: 1px solid #bdbdbd;
-  ::placeholder {
-    font-family: "myfont";
-  }
+
   @media screen and (max-width: 390px) {
     width: 725px;
     height: 65px;
+    font-size: 20px;
     ::placeholder {
       font-size: 20px;
     }
@@ -68,9 +66,6 @@ export const Password = styled.input`
   height: 52px;
   padding-left: 16px;
   border: 1px solid #bdbdbd;
-  ::placeholder {
-    font-family: "myfont";
-  }
   @media screen and (max-width: 390px) {
     width: 725px;
     height: 65px;
@@ -81,6 +76,8 @@ export const Password = styled.input`
 `;
 export const Error = styled.div`
   padding-top: 10px;
+  padding-left: 16px;
+  height: 14px;
   font-size: 14px;
   color: red;
 `;
@@ -93,9 +90,6 @@ export const Subject = styled.input`
   height: 52px;
   padding-left: 16px;
   border: 1px solid #bdbdbd;
-  ::placeholder {
-    font-family: "myfont";
-  }
   @media screen and (max-width: 390px) {
     width: 996px;
     height: 65px;
@@ -111,9 +105,6 @@ export const Contents = styled.textarea`
   padding-top: 16px;
   padding-left: 16px;
   resize: none;
-  ::placeholder {
-    font-family: "myfont";
-  }
   @media screen and (max-width: 390px) {
     width: 996px;
     height: 480px;
@@ -147,7 +138,6 @@ export const PostButton = styled.button`
   background-color: black;
   color: white;
   cursor: pointer;
-  font-family: "myfont";
   @media screen and (max-width: 390px) {
     width: 143px;
     height: 65px;
@@ -166,9 +156,6 @@ export const Youtube = styled.input`
   height: 52px;
   padding-left: 16px;
   border: 1px solid #bdbdbd;
-  ::placeholder {
-    font-family: "myfont";
-  }
 `;
 export const ImageWrapper = styled.div`
   padding-top: 40px;
@@ -191,10 +178,15 @@ export const ButtonWrapper = styled.div`
   padding-top: 40px;
   padding-bottom: 40px;
 `;
+
+interface IProps {
+  isActive: boolean;
+}
 export const Submit = styled.button`
   width: 171px;
   height: 52px;
-  font-family: "myfont";
   font-size: 16px;
   border: none;
+  background-color: ${(props: IProps) => (props.isActive ? "#FEE134" : "gray")};
+  cursor: ${(props: IProps) => (props.isActive ? "pointer" : "default")};
 `;

@@ -1,4 +1,4 @@
-import Pagintaions01 from "../commons/paginations/Paginataion01.container";
+import Pagintaions01 from "../../commons/paginations/Paginataion01.container";
 import {
   Wrapper,
   Title,
@@ -13,9 +13,9 @@ import {
   ColumnWriter,
   ColumnDate,
   Submit,
-} from "./Ssnyaegi.styles";
+} from "./Ssnyaegies.styles";
 
-export default function SsnyaegiUI(props) {
+export default function SsnyaegiesUI(props) {
   return (
     <Wrapper>
       <Title>SSNYAEGI</Title>
