@@ -4,8 +4,10 @@ import { useState } from "react";
 import SsgiUI from "./Ssgi.presenter";
 import { CREATE_BOARD } from "./Ssgi.queries";
 
-export default function Ssgi() {
+export default function Ssgi(props) {
+  const router = useRouter();
   const [isActive, setIsActive] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   // --> query 구문
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -129,6 +131,7 @@ export default function Ssgi() {
             },
           },
         });
+        router.push(`/sslyaegi/${result.data.createBoard._id}`);
       } catch (error) {
         console.log(error);
       }
@@ -139,6 +142,7 @@ export default function Ssgi() {
   return (
     <SsgiUI
       isActive={isActive}
+      isEdit={isEdit}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeSubject={onChangeSubject}
@@ -149,6 +153,7 @@ export default function Ssgi() {
       passwordError={passwordError}
       subjectError={subjectError}
       contentError={contentError}
+      data={props.data}
     />
   );
 }
