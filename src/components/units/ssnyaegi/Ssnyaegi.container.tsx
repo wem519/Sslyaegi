@@ -10,7 +10,7 @@ export default function Ssnyaegi() {
   });
 
   function onClickMoveToList() {
-    router.push(`/sslyaegi`);
+    router.push(`/sslyaegi/`);
   }
 
   return <SsnyaegiUI data={data} onClickMoveToList={onClickMoveToList} />;

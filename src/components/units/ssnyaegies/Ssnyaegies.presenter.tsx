@@ -2,6 +2,11 @@ import Pagintaions01 from "../../commons/paginations/Paginataion01.container";
 import {
   Wrapper,
   Title,
+  SearchWrapper,
+  SearchIcon,
+  SearchBar,
+  DateBar,
+  SearchButton,
   Board,
   Row,
   TopColumnNumber,
@@ -14,11 +19,16 @@ import {
   ColumnDate,
   Submit,
 } from "./Ssnyaegies.styles";
-
-export default function SsnyaegiesUI(props) {
+export default function SsnyaegiesUI(props: any) {
   return (
     <Wrapper>
       <Title>SSNYAEGI</Title>
+      <SearchWrapper>
+        <SearchIcon onClick={props.onClickSearch} isTrue={props.isTrue} />
+        <SearchBar isTrue={props.isTrue} />
+        <DateBar isTrue={props.isTrue} />
+        <SearchButton>검색하기</SearchButton>
+      </SearchWrapper>
       <Board>
         <div style={{ borderTop: "1px solid black" }} />
         <Row>

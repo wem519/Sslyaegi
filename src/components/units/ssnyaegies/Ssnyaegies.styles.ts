@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { SearchOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
   margin: 100px auto;
@@ -15,6 +16,49 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   margin-top: 20px;
   font-size: 40px;
+`;
+export const SearchWrapper = styled.div`
+  width: 100%;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+`;
+export const SearchIcon = styled(SearchOutlined)`
+  font-size: 30px;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: ${(props) => (props.isTrue ? "black" : "#bdbdbd")};
+  :hover {
+    color: black;
+  }
+`;
+export const SearchBar = styled.input`
+  width: 576px;
+  height: 52px;
+  padding-left: 55px;
+  font-size: 20px;
+  align-items: center;
+  border: ${(props: any) => (props.isTrue ? "1px solid #BDBDBD" : "none")};
+  display: ${(props) => (props.isTrue ? "" : "none")};
+`;
+export const DateBar = styled.input`
+  width: 244px;
+  height: 52px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #bdbdbd;
+  margin-left: ${(props) => (props.isTrue ? "0px" : "617.5px")};
+`;
+export const SearchButton = styled.button`
+  width: 94px;
+  height: 52px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
 `;
 export const Board = styled.div`
   margin-top: 40px;
@@ -59,6 +103,9 @@ export const ColumnWriter = styled.div`
 export const ColumnTitle = styled.div`
   width: 60%;
   text-align: center;
+  :hover {
+    color: #fee134;
+  }
 `;
 export const ColumnDate = styled.div`
   width: 20%;
@@ -74,6 +121,10 @@ export const Submit = styled.button`
   border: 1px solid #bdbdbd;
   font-size: 16px;
   cursor: pointer;
+  :hover {
+    background-color: #fee134;
+    border: none;
+  }
 
   @media screen and (max-width: 390px) {
     width: 110px;

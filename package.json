@@ -10,6 +10,7 @@
     "generate": "graphql-codegen"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.5.6",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

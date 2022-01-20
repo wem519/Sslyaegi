@@ -5,6 +5,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Ssnyaegies() {
+  // -->search부분
+  const [isTrue, setIsTrue] = useState(false);
+  function onClickSearch() {
+    setIsTrue((prev) => !prev);
+  }
+  // -->search부분
+
   const [startPage, setStartPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
@@ -28,6 +35,8 @@ export default function Ssnyaegies() {
       setStartPage={setStartPage}
       refetch={refetch}
       count={dataBoardsCount?.fetchBoardsCount}
+      isTrue={isTrue}
+      onClickSearch={onClickSearch}
     />
   );
 }
