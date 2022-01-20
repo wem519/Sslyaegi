@@ -26,6 +26,7 @@ export const Row = styled.div`
   height: 52px;
   line-height: 52px;
   border-bottom: 1px solid #bdbdbd;
+  cursor: pointer;
 `;
 export const TopColumnNumber = styled.div`
   width: 10%;

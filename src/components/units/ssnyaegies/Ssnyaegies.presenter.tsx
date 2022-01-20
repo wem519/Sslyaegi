@@ -28,7 +28,7 @@ export default function SsnyaegiesUI(props) {
           <TopColumnDate>날짜</TopColumnDate>
         </Row>
         {props.data?.fetchBoards.map((el, index) => (
-          <Row key={el._id}>
+          <Row key={el._id} id={el._id} onClick={props.onClickMoveToDetail}>
             <ColumnNumber>{index + 1}</ColumnNumber>
             <ColumnTitle>{el.title}</ColumnTitle>
             <ColumnWriter>{el.writer}</ColumnWriter>

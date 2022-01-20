@@ -5,7 +5,6 @@ import Ssgi from "../../../../src/components/units/ssgi/Ssgi.container";
 const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!) {
     fetchBoard(boardId: $boardId) {
-      _id
       writer
       title
       contents

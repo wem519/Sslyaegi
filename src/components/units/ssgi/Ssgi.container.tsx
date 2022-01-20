@@ -7,7 +7,6 @@ import { CREATE_BOARD } from "./Ssgi.queries";
 export default function Ssgi(props) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
 
   // --> query 구문
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -100,7 +99,7 @@ export default function Ssgi(props) {
   function onChangeYoutubeUrl(event) {
     setYoutubeUrl(event.target.value);
   }
-  function onClickSubmit() {
+  async function onClickSubmit() {
     if (writer === "") {
       setWriterError("작성자를 입력해주세요");
     }
@@ -115,19 +114,19 @@ export default function Ssgi(props) {
     }
     if (writer !== "" && password !== "" && subject !== "" && content !== "") {
       try {
-        const result = createBoard({
+        const result = await createBoard({
           variables: {
             createBoardInput: {
-              writer,
-              password,
+              writer: writer,
+              password: password,
               title: subject,
-              constents: content,
-              youtubeUrl: youtubeUrl,
-              boardAddress: {
-                zipcode,
-                address,
-                addressDetail,
-              },
+              contents: content,
+              // youtubeUrl: youtubeUrl,
+              // boardAddress: {
+              //   zipcode,
+              //   address,
+              //   addressDetail,
+              // },
             },
           },
         });
@@ -142,7 +141,6 @@ export default function Ssgi(props) {
   return (
     <SsgiUI
       isActive={isActive}
-      isEdit={isEdit}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeSubject={onChangeSubject}
@@ -154,6 +152,7 @@ export default function Ssgi(props) {
       subjectError={subjectError}
       contentError={contentError}
       data={props.data}
+      isEdit={props.isEdit}
     />
   );
 }

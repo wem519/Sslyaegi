@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Ssnyaegi() {
+export default function Ssnyaegies() {
   const [startPage, setStartPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
@@ -15,10 +15,15 @@ export default function Ssnyaegi() {
   function onClickWrite() {
     router.push("/sslyaegi/ssgi");
   }
+  function onClickMoveToDetail(event) {
+    router.push(`/sslyaegi/${event.currentTarget.id}`);
+  }
+
   return (
     <SsnyaegiesUI
       data={data}
       onClickWrite={onClickWrite}
+      onClickMoveToDetail={onClickMoveToDetail}
       startPage={startPage}
       setStartPage={setStartPage}
       refetch={refetch}
