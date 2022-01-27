@@ -25,25 +25,29 @@ export const SearchWrapper = styled.div`
   justify-content: space-between;
   position: relative;
 `;
+interface props {
+  isTrue: boolean;
+}
 export const SearchIcon = styled(SearchOutlined)`
   font-size: 30px;
   align-items: center;
   position: absolute;
   bottom: 10px;
   left: 15px;
-  color: ${(props) => (props.isTrue ? "black" : "#bdbdbd")};
+  color: ${(props: props) => (props.isTrue ? "black" : "#bdbdbd")};
   :hover {
     color: black;
   }
 `;
+
 export const SearchBar = styled.input`
   width: 576px;
   height: 52px;
   padding-left: 55px;
   font-size: 20px;
   align-items: center;
-  border: ${(props: any) => (props.isTrue ? "1px solid #BDBDBD" : "none")};
-  display: ${(props) => (props.isTrue ? "" : "none")};
+  border: ${(props: props) => (props.isTrue ? "1px solid #BDBDBD" : "none")};
+  display: ${(props: props) => (props.isTrue ? "" : "none")};
 `;
 export const DateBar = styled.input`
   width: 244px;
@@ -51,7 +55,7 @@ export const DateBar = styled.input`
   font-size: 18px;
   text-align: center;
   border: 1px solid #bdbdbd;
-  margin-left: ${(props) => (props.isTrue ? "0px" : "617.5px")};
+  margin-left: ${(props: props) => (props.isTrue ? "0px" : "617.5px")};
 `;
 export const SearchButton = styled.button`
   width: 94px;
