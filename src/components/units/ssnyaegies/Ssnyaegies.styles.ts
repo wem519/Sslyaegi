@@ -24,6 +24,13 @@ export const SearchWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+
+  @media screen and (max-width: 390px) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 interface props {
   isTrue: boolean;
@@ -48,6 +55,10 @@ export const SearchBar = styled.input`
   align-items: center;
   border: ${(props: props) => (props.isTrue ? "1px solid #BDBDBD" : "none")};
   display: ${(props: props) => (props.isTrue ? "" : "none")};
+
+  @media screen and (max-width: 390px) {
+    width: 278px;
+  }
 `;
 export const DateBar = styled.input`
   width: 244px;
@@ -56,6 +67,11 @@ export const DateBar = styled.input`
   text-align: center;
   border: 1px solid #bdbdbd;
   margin-left: ${(props: props) => (props.isTrue ? "0px" : "617.5px")};
+
+  @media screen and (max-width: 390px) {
+    width: 190px;
+    margin-left: ${(props: props) => (props.isTrue ? "" : "317px")};
+  }
 `;
 export const SearchButton = styled.button`
   width: 94px;
@@ -63,6 +79,8 @@ export const SearchButton = styled.button`
   background-color: black;
   color: white;
   font-size: 15px;
+  @media screen and (max-width: 390px) {
+  }
 `;
 export const Board = styled.div`
   margin-top: 40px;

@@ -14,7 +14,6 @@ import {
   ListButton,
   UpdateButton,
 } from "./Ssnyaegi.styles";
-
 export default function SsnyaegiUI(props) {
   return (
     <Wrapper>

@@ -7,6 +7,7 @@ import { CREATE_BOARD } from "./Ssgi.queries";
 export default function Ssgi(props) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // --> query 구문
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -99,6 +100,13 @@ export default function Ssgi(props) {
   function onChangeYoutubeUrl(event) {
     setYoutubeUrl(event.target.value);
   }
+  function onClickAddressSearch() {
+    setIsOpen(true);
+  }
+  function onCompleteAddressSearch() {}
+  function onCancel() {
+    setIsOpen(false);
+  }
   async function onClickSubmit() {
     if (writer === "") {
       setWriterError("작성자를 입력해주세요");
@@ -121,7 +129,7 @@ export default function Ssgi(props) {
               password: password,
               title: subject,
               contents: content,
-              // youtubeUrl: youtubeUrl,
+              youtubeUrl: youtubeUrl,
               // boardAddress: {
               //   zipcode,
               //   address,
@@ -146,6 +154,9 @@ export default function Ssgi(props) {
       onChangeSubject={onChangeSubject}
       onChangeContent={onChangeContent}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
+      onClickAddressSearch={onClickAddressSearch}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      onCancel={onCancel}
       onClickSubmit={onClickSubmit}
       writerError={writerError}
       passwordError={passwordError}
@@ -153,6 +164,7 @@ export default function Ssgi(props) {
       contentError={contentError}
       data={props.data}
       isEdit={props.isEdit}
+      isOpen={isOpen}
     />
   );
 }
