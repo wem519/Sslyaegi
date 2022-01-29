@@ -100,10 +100,17 @@ export default function Ssgi(props) {
   function onChangeYoutubeUrl(event) {
     setYoutubeUrl(event.target.value);
   }
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
+  }
   function onClickAddressSearch() {
     setIsOpen(true);
   }
-  function onCompleteAddressSearch() {}
+  function onCompleteAddressSearch(data) {
+    setZipcode(data.zonecode);
+    setAddress(data.address);
+    setIsOpen(false);
+  }
   function onCancel() {
     setIsOpen(false);
   }
@@ -130,11 +137,11 @@ export default function Ssgi(props) {
               title: subject,
               contents: content,
               youtubeUrl: youtubeUrl,
-              // boardAddress: {
-              //   zipcode,
-              //   address,
-              //   addressDetail,
-              // },
+              boardAddress: {
+                zipcode,
+                address,
+                addressDetail,
+              },
             },
           },
         });
@@ -154,6 +161,7 @@ export default function Ssgi(props) {
       onChangeSubject={onChangeSubject}
       onChangeContent={onChangeContent}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
+      onChangeAddressDetail={onChangeAddressDetail}
       onClickAddressSearch={onClickAddressSearch}
       onCompleteAddressSearch={onCompleteAddressSearch}
       onCancel={onCancel}
@@ -162,6 +170,8 @@ export default function Ssgi(props) {
       passwordError={passwordError}
       subjectError={subjectError}
       contentError={contentError}
+      zipcede={zipcode}
+      address={address}
       data={props.data}
       isEdit={props.isEdit}
       isOpen={isOpen}

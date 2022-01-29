@@ -30,7 +30,7 @@ export default function SsgiUI(props) {
   return (
     <>
       {props.isOpen && (
-        <Modal visible={props.isOpen} onCancel={props.onCancel}>
+        <Modal visible={true} onCancel={props.onCancel}>
           <DaumPostcode onComplete={props.onCompleteAddressSearch} autoClose />
         </Modal>
       )}
@@ -77,22 +77,37 @@ export default function SsgiUI(props) {
         <InputWrapper>
           <Label>주소</Label>
           <PostWrapper>
-            <Post />
+            <Post
+              readOnly
+              value={
+                props.zipcede || props.data?.fetchBoard.boardAddress?.zipcode
+              }
+            />
             <PostButton onClick={props.onClickAddressSearch}>
               우편번호검색
             </PostButton>
           </PostWrapper>
-          <Address />
-          <Address />
-          <InputWrapper>
-            <Label>유튜브</Label>
-            <Youtube placeholder="유투브 링크를 복사해주세요" />
-          </InputWrapper>
+          <Address
+            readOnly
+            value={
+              props.address || props.data?.fetchBoard.boardAddress?.address
+            }
+          />
+          <Address onChange={props.onChangeAddressDetail} />
+        </InputWrapper>
+        <InputWrapper>
+          <Label>유튜브</Label>
+          <Youtube placeholder="유튜브 링크를 복사해주세요" />
         </InputWrapper>
         <ImageWrapper>
           <Label>사진 첨부</Label>
           {new Array(3).fill(1).map((el, index) => (
-            <Uploads01 key={`${el}+${index}`} />
+            <Uploads01
+              key={`${el}_${index}`}
+              index={index}
+              onChangeFile={props.onChangeFile}
+              defaultValue={props.data?.fetchBoard.images?.[index]}
+            />
           ))}
         </ImageWrapper>
         <RadioWrapper>

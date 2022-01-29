@@ -4,6 +4,7 @@ import { UploadImage, UploadButton, HiddenInput } from "./Uploads01.styles";
 export default function Uploads01(props) {
   const fileref = useRef(null);
   const [preImg, setPreImg] = useState("");
+  // console.log(preImg);
 
   function onClickUpload() {
     fileref.current?.click();
@@ -25,7 +26,7 @@ export default function Uploads01(props) {
         <UploadImage
           onClick={onClickUpload}
           src={preImg || `https://storage.googleapis.com/${props.defaultValue}`}
-        ></UploadImage>
+        />
       ) : (
         <UploadButton type="button" onClick={onClickUpload}>
           +

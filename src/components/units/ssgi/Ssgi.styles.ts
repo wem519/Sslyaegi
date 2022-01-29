@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  margin: 100px auto;
+  margin: 100px;
   padding-left: 102px;
   padding-right: 102px;
   display: flex;
@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 1200px;
   border: 1px solid black;
+  background-color: red;
 
   @media screen and (max-width: 390px) {
     border: none;
@@ -122,6 +123,8 @@ export const Post = styled.input`
   width: 77px;
   height: 52px;
   border: 1px solid #bdbdbd;
+  text-align: center;
+  font-size: 14px;
   @media screen and (max-width: 390px) {
     width: 107px;
     height: 65px;
@@ -160,10 +163,12 @@ export const Youtube = styled.input`
 export const ImageWrapper = styled.div`
   padding-top: 40px;
   width: 996px;
+  background-color: blue;
 `;
 export const RadioWrapper = styled.div`
   padding-top: 40px;
   width: 996px;
+  background-color: yellow;
 `;
 export const Radio = styled.input`
   cursor: pointer;
@@ -175,7 +180,7 @@ export const RadioLabel = styled.label`
   cursor: pointer;
 `;
 export const ButtonWrapper = styled.div`
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 40px;
 `;
 
