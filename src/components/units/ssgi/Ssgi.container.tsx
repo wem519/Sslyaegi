@@ -155,6 +155,7 @@ export default function Ssgi(props) {
             },
           },
         });
+        console.log(result.data.createBoard.images, "사진");
         router.push(`/sslyaegi/${result.data.createBoard._id}`);
       } catch (error) {
         console.log(error);
