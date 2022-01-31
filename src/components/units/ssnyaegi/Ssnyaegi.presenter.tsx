@@ -33,7 +33,11 @@ export default function SsnyaegiUI(props) {
       <ContentsWrapper>
         <Title>{props.data?.fetchBoard.title}</Title>
         <ImgWrapper>
-          <Image />
+          {props.data?.fetchBoard.images
+            ?.filter((el) => el)
+            .map((el) => (
+              <Image key={el} src={`https://storage.googleapis.com/${el}`} />
+            ))}
         </ImgWrapper>
         <Content>{props.data?.fetchBoard.contents}</Content>
         <Youtube />

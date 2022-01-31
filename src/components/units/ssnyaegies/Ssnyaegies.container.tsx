@@ -6,9 +6,9 @@ import { useState } from "react";
 
 export default function Ssnyaegies() {
   // -->search부분
-  const [isTrue, setIsTrue] = useState(false);
+  const [istrue, setIstrue] = useState(false);
   function onClickSearch() {
-    setIsTrue((prev) => !prev);
+    setIstrue((prev) => !prev);
   }
   // -->search부분
 
@@ -35,7 +35,7 @@ export default function Ssnyaegies() {
       setStartPage={setStartPage}
       refetch={refetch}
       count={dataBoardsCount?.fetchBoardsCount}
-      isTrue={isTrue}
+      istrue={istrue}
       onClickSearch={onClickSearch}
     />
   );

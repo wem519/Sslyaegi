@@ -105,7 +105,7 @@ export default function SsgiUI(props) {
             <Uploads01
               key={`${el}_${index}`}
               index={index}
-              onChangeFile={props.onChangeFile}
+              onChangeFiles={props.onChangeFiles}
               defaultValue={props.data?.fetchBoard.images?.[index]}
             />
           ))}

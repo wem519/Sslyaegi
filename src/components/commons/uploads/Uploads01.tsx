@@ -4,7 +4,7 @@ import { UploadImage, UploadButton, HiddenInput } from "./Uploads01.styles";
 export default function Uploads01(props) {
   const fileref = useRef(null);
   const [preImg, setPreImg] = useState("");
-  // console.log(preImg);
+  console.log(preImg);
 
   function onClickUpload() {
     fileref.current?.click();
@@ -20,6 +20,7 @@ export default function Uploads01(props) {
       setPreImg(data.target?.result as string); // 임시미리보기 저장
     };
   }
+
   return (
     <>
       {preImg || props.defaultValue ? (

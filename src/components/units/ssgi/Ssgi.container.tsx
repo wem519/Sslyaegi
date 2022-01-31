@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import SsgiUI from "./Ssgi.presenter";
-import { CREATE_BOARD } from "./Ssgi.queries";
+import { CREATE_BOARD, UPLOAD_FILE } from "./Ssgi.queries";
 
 export default function Ssgi(props) {
   const router = useRouter();
@@ -11,6 +11,7 @@ export default function Ssgi(props) {
 
   // --> query 구문
   const [createBoard] = useMutation(CREATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   // --> query 구문
 
   // --> 게시판 입력 상태관리
@@ -22,6 +23,8 @@ export default function Ssgi(props) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+
+  const [files, setFiles] = useState([null, null, null]);
   // --> 게시판 입력 상태관리
 
   // --> 에러 메시지 상태관리
@@ -129,6 +132,12 @@ export default function Ssgi(props) {
     }
     if (writer !== "" && password !== "" && subject !== "" && content !== "") {
       try {
+        const uploadFiles = files.map((el) =>
+          el ? uploadFile({ variables: { file: el } }) : null
+        );
+        const results = await Promise.all(uploadFiles);
+        const Images = results.map((el) => el?.data.uploadFile.url || "");
+
         const result = await createBoard({
           variables: {
             createBoardInput: {
@@ -138,10 +147,11 @@ export default function Ssgi(props) {
               contents: content,
               youtubeUrl: youtubeUrl,
               boardAddress: {
-                zipcode,
-                address,
-                addressDetail,
+                zipcode: zipcode,
+                address: address,
+                addressDetail: addressDetail,
               },
+              images: Images,
             },
           },
         });
@@ -150,6 +160,11 @@ export default function Ssgi(props) {
         console.log(error);
       }
     }
+  }
+  function onChangeFiles(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
   }
   // --> input 값 실시간 변경 실행
 
@@ -175,6 +190,7 @@ export default function Ssgi(props) {
       data={props.data}
       isEdit={props.isEdit}
       isOpen={isOpen}
+      onChangeFiles={onChangeFiles}
     />
   );
 }

@@ -32,8 +32,8 @@ export const SearchWrapper = styled.div`
     justify-content: space-between;
   }
 `;
-interface props {
-  isTrue: boolean;
+interface Iprops {
+  istrue: boolean;
 }
 export const SearchIcon = styled(SearchOutlined)`
   font-size: 30px;
@@ -41,7 +41,7 @@ export const SearchIcon = styled(SearchOutlined)`
   position: absolute;
   bottom: 10px;
   left: 15px;
-  color: ${(props: props) => (props.isTrue ? "black" : "#bdbdbd")};
+  color: ${(props: Iprops) => (props.istrue ? "black" : "#bdbdbd")};
   :hover {
     color: black;
   }
@@ -53,8 +53,8 @@ export const SearchBar = styled.input`
   padding-left: 55px;
   font-size: 20px;
   align-items: center;
-  border: ${(props: props) => (props.isTrue ? "1px solid #BDBDBD" : "none")};
-  display: ${(props: props) => (props.isTrue ? "" : "none")};
+  border: ${(props: Iprops) => (props.istrue ? "1px solid #BDBDBD" : "none")};
+  display: ${(props: Iprops) => (props.istrue ? "" : "none")};
 
   @media screen and (max-width: 390px) {
     width: 278px;
@@ -66,11 +66,11 @@ export const DateBar = styled.input`
   font-size: 18px;
   text-align: center;
   border: 1px solid #bdbdbd;
-  margin-left: ${(props: props) => (props.isTrue ? "0px" : "617.5px")};
+  margin-left: ${(props: Iprops) => (props.istrue ? "0px" : "617.5px")};
 
   @media screen and (max-width: 390px) {
     width: 190px;
-    margin-left: ${(props: props) => (props.isTrue ? "" : "317px")};
+    margin-left: ${(props: Iprops) => (props.istrue ? "" : "317px")};
   }
 `;
 export const SearchButton = styled.button`

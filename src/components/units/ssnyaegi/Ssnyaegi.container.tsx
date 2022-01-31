@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { FETCH_BOARD } from "./Ssnyaegi.queries";
 import SsnyaegiUI from "./Ssnyaegi.presenter";
 

@@ -24,9 +24,9 @@ export default function SsnyaegiesUI(props: any) {
     <Wrapper>
       <Title>SSNYAEGI</Title>
       <SearchWrapper>
-        <SearchIcon onClick={props.onClickSearch} isTrue={props.isTrue} />
-        <SearchBar isTrue={props.isTrue} />
-        <DateBar isTrue={props.isTrue} />
+        <SearchIcon onClick={props.onClickSearch} istrue={props.istrue} />
+        <SearchBar istrue={props.istrue} />
+        <DateBar istrue={props.istrue} />
         <SearchButton>검색하기</SearchButton>
       </SearchWrapper>
       <Board>
