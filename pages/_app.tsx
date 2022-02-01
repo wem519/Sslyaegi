@@ -5,6 +5,7 @@ import {
   ApolloProvider,
   InMemoryCache,
 } from "@apollo/client";
+import "antd/dist/antd.css";
 import { Global } from "@emotion/react";
 import { createUploadLink } from "apollo-upload-client";
 import { globalStyles } from "../src/commons/styles/globalStyles";

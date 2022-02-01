@@ -30,7 +30,11 @@ export default function SsgiUI(props) {
   return (
     <>
       {props.isOpen && (
-        <Modal visible={true} onCancel={props.onCancel}>
+        <Modal
+          visible={true}
+          onOk={props.onClickAddressSearch}
+          onCancel={props.onCancel}
+        >
           <DaumPostcode onComplete={props.onCompleteAddressSearch} autoClose />
         </Modal>
       )}
