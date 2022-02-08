@@ -44,7 +44,9 @@ export default function SsnyaegiUI(props) {
       </ContentsWrapper>
       <ButtonWrapper>
         <ListButton onClick={props.onClickMoveToList}>목록으로</ListButton>
-        <UpdateButton>수정하기</UpdateButton>
+        <UpdateButton onClick={props.onClickMoveToUpdate}>
+          수정하기
+        </UpdateButton>
       </ButtonWrapper>
     </Wrapper>
   );

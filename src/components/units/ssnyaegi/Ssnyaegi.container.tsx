@@ -12,6 +12,15 @@ export default function Ssnyaegi() {
   function onClickMoveToList() {
     router.push(`/sslyaegi/`);
   }
+  function onClickMoveToUpdate() {
+    router.push(`/sslyaegi/${router.query.read}/edit`);
+  }
 
-  return <SsnyaegiUI data={data} onClickMoveToList={onClickMoveToList} />;
+  return (
+    <SsnyaegiUI
+      data={data}
+      onClickMoveToList={onClickMoveToList}
+      onClickMoveToUpdate={onClickMoveToUpdate}
+    />
+  );
 }
