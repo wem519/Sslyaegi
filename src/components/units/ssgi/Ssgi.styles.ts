@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 1200px;
   border: 1px solid black;
-  background-color: red;
 
   @media screen and (max-width: 390px) {
     border: none;
@@ -80,7 +79,6 @@ export const Error = styled.div`
   padding-left: 16px;
   height: 14px;
   font-size: 14px;
-  color: red;
 `;
 export const ContentsWrapper = styled.div`
   display: flex;
@@ -163,12 +161,10 @@ export const Youtube = styled.input`
 export const ImageWrapper = styled.div`
   padding-top: 40px;
   width: 996px;
-  background-color: blue;
 `;
 export const RadioWrapper = styled.div`
   padding-top: 40px;
   width: 996px;
-  background-color: yellow;
 `;
 export const Radio = styled.input`
   cursor: pointer;
