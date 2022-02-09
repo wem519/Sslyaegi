@@ -79,6 +79,7 @@ export const Error = styled.div`
   padding-left: 16px;
   height: 14px;
   font-size: 14px;
+  color: red;
 `;
 export const ContentsWrapper = styled.div`
   display: flex;

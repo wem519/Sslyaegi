@@ -1,8 +1,9 @@
 import { useMutation } from "@apollo/client";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import SsgiUI from "./Ssgi.presenter";
-import { CREATE_BOARD, UPLOAD_FILE } from "./Ssgi.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./Ssgi.queries";
 
 export default function Ssgi(props) {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function Ssgi(props) {
   // --> query 구문
   const [createBoard] = useMutation(CREATE_BOARD);
   const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
   // --> query 구문
 
   // --> 게시판 입력 상태관리
@@ -35,7 +37,6 @@ export default function Ssgi(props) {
   // --> 에러 메시지 상태관리
 
   // --> input 값 실시간 변경 실행
-
   function onChangeWriter(event) {
     setWriter(event.target.value);
     if (event.target.value !== "") {
@@ -117,6 +118,7 @@ export default function Ssgi(props) {
   function onCancel() {
     setIsOpen(false);
   }
+  // --> 게시판 등록하기
   async function onClickSubmit() {
     if (writer === "") {
       setWriterError("작성자를 입력해주세요");
@@ -162,11 +164,71 @@ export default function Ssgi(props) {
       }
     }
   }
+  // --> 게시판 등록하기
+
+  // --> 게시판 수정하기
+  interface IMyUpdateBoardInput {
+    title?: string;
+    contents?: string;
+    youtubeUrl?: string;
+    boardAddress?: {
+      zipcode?: string;
+      address?: string;
+      addressDetail?: string;
+    };
+    images?: string[];
+  }
+  // optional Properties : 사용해도 되고 안해도 상관없는 Property, 위처럼 적용하지 않는다면 위의 모든 state값이 있어야 오류가 발생 X
+
+  async function onClickUpdate() {
+    if (!subject && !content) {
+      Modal.error({ content: "수정내용이 없습니다" });
+    }
+
+    const myUpdateBoardInput: IMyUpdateBoardInput = {};
+    if (subject) myUpdateBoardInput.title = subject;
+    if (content) myUpdateBoardInput.contents = content;
+    if (youtubeUrl) myUpdateBoardInput.youtubeUrl = youtubeUrl;
+    if (zipcode || address || addressDetail) {
+      myUpdateBoardInput.boardAddress = {};
+      if (zipcode) myUpdateBoardInput.boardAddress.zipcode = zipcode;
+      if (address) myUpdateBoardInput.boardAddress.address = address;
+      if (addressDetail)
+        myUpdateBoardInput.boardAddress.addressDetail = addressDetail;
+    }
+
+    const uploadFiles = files.map((el) =>
+      el ? uploadFile({ variables: { file: el } }) : null
+    );
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    myUpdateBoardInput.images = nextImages;
+
+    if (props.data?.fetchBoard.images?.length) {
+      const prevImages = [...props.data?.fetchBoard.images];
+      myUpdateBoardInput.images = prevImages.map(
+        (el, index) => nextImages[index] || el
+      );
+    } else {
+      myUpdateBoardInput.images = nextImages;
+    }
+
+    await updateBoard({
+      variables: {
+        boardId: router.query.read,
+        password: password,
+        updateBoardInput: myUpdateBoardInput,
+      },
+    });
+    router.push(`/sslyaegi/${router.query.read}`);
+  }
+
   function onChangeFiles(file, index) {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
   }
+  // --> 게시판 수정하기
   // --> input 값 실시간 변경 실행
 
   return (
@@ -182,6 +244,7 @@ export default function Ssgi(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onCancel={onCancel}
       onClickSubmit={onClickSubmit}
+      onClickUpdate={onClickUpdate}
       writerError={writerError}
       passwordError={passwordError}
       subjectError={subjectError}

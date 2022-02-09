@@ -39,7 +39,7 @@ export default function SsgiUI(props) {
         </Modal>
       )}
       <Wrapper>
-        <Title>SSGI 등록</Title>
+        <Title>{props.isEdit ? "SSGI 수정" : "SSGI 등록"}</Title>
         <WriterWrapper>
           <InputWrapper>
             <Label>작성자</Label>
@@ -47,6 +47,7 @@ export default function SsgiUI(props) {
               type="text"
               placeholder="이름을 입력해주세요"
               onChange={props.onChangeWriter}
+              defaultValue={props.data?.fetchBoard.writer}
             />
             <Error>{props.writerError}</Error>
           </InputWrapper>
@@ -66,6 +67,7 @@ export default function SsgiUI(props) {
             <Subject
               placeholder="제목을 입력해주세요"
               onChange={props.onChangeSubject}
+              defaultValue={props.data?.fetchBoard.title}
             />
             <Error>{props.subjectError}</Error>
           </InputWrapper>
@@ -74,6 +76,7 @@ export default function SsgiUI(props) {
             <Contents
               placeholder="내용을 입력해주세요"
               onChange={props.onChangeContent}
+              defaultValue={props.data?.fetchBoard.contents}
             />
             <Error>{props.contentError}</Error>
           </InputWrapper>
@@ -97,7 +100,10 @@ export default function SsgiUI(props) {
               props.address || props.data?.fetchBoard.boardAddress?.address
             }
           />
-          <Address onChange={props.onChangeAddressDetail} />
+          <Address
+            onChange={props.onChangeAddressDetail}
+            defaultValue={props.data?.fetchBoard.boardAddress?.addressDetail}
+          />
         </InputWrapper>
         <InputWrapper>
           <Label>유튜브</Label>
@@ -124,9 +130,16 @@ export default function SsgiUI(props) {
           <RadioLabel htmlFor="image">사진</RadioLabel>
         </RadioWrapper>
         <ButtonWrapper>
-          <Submit onClick={props.onClickSubmit} isActive={props.isActive}>
-            등록하기
-          </Submit>
+          {!props.isEdit && (
+            <Submit onClick={props.onClickSubmit} isActive={props.isActive}>
+              등록하기
+            </Submit>
+          )}
+          {props.isEdit && (
+            <Submit onClick={props.onClickUpdate} isActive={props.isActive}>
+              수정하기
+            </Submit>
+          )}
         </ButtonWrapper>
       </Wrapper>
     </>
